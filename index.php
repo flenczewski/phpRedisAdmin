@@ -61,9 +61,7 @@ if($redis) {
 
         // Get the number of items in the key.
         if (!isset($config['faster']) || !$config['faster']) {
-
-          $type = $redis->type($fullkey);
-          switch ($type) {
+          switch ($redis->type($fullkey)) {
             case 'hash':
               $len = $redis->hLen($fullkey);
               break;
